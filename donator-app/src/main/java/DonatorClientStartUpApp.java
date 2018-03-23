@@ -5,9 +5,7 @@ import javafx.stage.Stage;
 
 import java.io.PrintWriter;
 
-public class Main extends Application {
-    private static PrintWriter printWriter;
-
+public class DonatorClientStartUpApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
