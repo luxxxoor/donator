@@ -1,0 +1,12 @@
+.label {
+	-fx-text-fill: #9e8484;
+}
+
+#menuItem:hover .label {
+	-fx-text-fill: white;
+}
+
+#menuItem:hover {
+	-fx-background-color: rgb(17, 0, 0);
+}
+

@@ -3,8 +3,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.PrintWriter;
-
 public class DonatorClientStartUpApp extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -13,7 +11,7 @@ public class DonatorClientStartUpApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("login.fxml"));
+        loader.setLocation(getClass().getResource("xml/MainWindow.fxml"));
         primaryStage.setScene(new Scene(loader.load()));
         primaryStage.show();
     }
