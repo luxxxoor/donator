@@ -10,6 +10,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.util.Vector;
+
+import static java.lang.Math.abs;
+
 
 public class MainWindowController {
     private int dimensiuneMeniu = 200;
@@ -23,16 +27,24 @@ public class MainWindowController {
     @FXML public HBox menuItem_Doneaza;
     @FXML public HBox menuItem_Istoric;
     @FXML public HBox menuItem_DatePersonale;
+    private Vector<HBox> menuItems;
+    private String culoareMeniuItemActiv;
 
     public MainWindowController() {
     }
 
     @FXML
     private void initialize() {
-        meniu.setStyle("-fx-background-color: rgb(155, 0, 0)");
+        //meniu.setStyle("-fx-background-color: rgb(155, 0, 0)");
+        culoareMeniuItemActiv = "rgb(50, 50, 50)";
         meniuActiv = true;
         meniuFixat = false;
         hideMenu();
+
+        menuItems = new Vector<>();
+        menuItems.add(menuItem_Doneaza);
+        menuItems.add(menuItem_Istoric);
+        menuItems.add(menuItem_DatePersonale);
     }
 
     /**
@@ -44,6 +56,7 @@ public class MainWindowController {
     public void fixMenu(MouseEvent mouseEvent) {
         //fixMenu();
     }
+
     public void fixMenu() {
         if (meniuActiv) {
             meniuFixat = true;
@@ -54,6 +67,7 @@ public class MainWindowController {
     public void showMenu(MouseEvent mouseEvent) {
         showMenu();
     }
+
     private void showMenu() {
         if (!meniuActiv) {
             moveHorizontal(meniu, dimensiuneMeniu, 200);
@@ -67,6 +81,7 @@ public class MainWindowController {
     public void hideMenu(MouseEvent mouseEvent) {
         hideMenu();
     }
+
     private void hideMenu() {
         if (meniuActiv && !meniuFixat) {
             moveHorizontal(meniu, -dimensiuneMeniu, 200);
@@ -81,11 +96,12 @@ public class MainWindowController {
      */
     @FXML
     public void showAndFixMenu(MouseEvent mouseEvent) {
-        if(mouseEvent.getButton().equals(MouseButton.PRIMARY))
-            if(mouseEvent.getClickCount() == 2)
+        if (mouseEvent.getButton().equals(MouseButton.PRIMARY))
+            if (mouseEvent.getClickCount() == 2)
                 showAndFixMenu();
     }
-    public void showAndFixMenu() {
+
+    private void showAndFixMenu() {
         if (!meniuActiv)
             showMenu();
         meniuFixat = true;
@@ -96,6 +112,11 @@ public class MainWindowController {
         TranslateTransition translateTransition = new TranslateTransition();
         translateTransition.setDuration(Duration.millis(duration));
         translateTransition.setNode(node);
+        // tratare bug pentru cazul în care distance == node.getWidth()
+        int deviatie = (int) (abs(distance) - abs(node.getTranslateX()));    // getTranslateX() = poziția curentă relativ la poziția inițială
+        if (deviatie != 0 && deviatie != abs(distance)) {
+            node.setTranslateX(0);
+        }
         translateTransition.setByX(distance);
         translateTransition.setAutoReverse(false);
         translateTransition.play();
@@ -111,5 +132,18 @@ public class MainWindowController {
     }
 
 
+    public void goToDoneazaHandler(MouseEvent mouseEvent) {
+        menuItems.forEach(menuItem -> menuItem.setStyle(""));
+        menuItem_Doneaza.setStyle("-fx-background-color: " + culoareMeniuItemActiv +";");
+    }
 
+    public void goToIstoricHandler(MouseEvent mouseEvent) {
+        menuItems.forEach(menuItem -> menuItem.setStyle(""));
+        menuItem_Istoric.setStyle("-fx-background-color: " + culoareMeniuItemActiv +";");
+    }
+
+    public void goToDatePersonaleHandler(MouseEvent mouseEvent) {
+        menuItems.forEach(menuItem -> menuItem.setStyle(""));
+        menuItem_DatePersonale.setStyle("-fx-background-color: " + culoareMeniuItemActiv +";");
+    }
 }

@@ -15,10 +15,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainWindowController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainWindowController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="pane" stylesheets="@../css/MainWindow.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="pane" stylesheets="@../css/MainWindow.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <top>
@@ -62,9 +61,9 @@
             </BorderPane>
          </center>
       </BorderPane>
-      <VBox fx:id="menuHeader" alignment="CENTER" maxWidth="50.0" onMouseEntered="#showMenu" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
+      <VBox fx:id="menuHeader" alignment="CENTER" maxWidth="50.0" onMouseEntered="#showMenu" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0" stylesheets="@../css/Meniu.css">
          <children>
-            <ImageView fx:id="menuIconBack" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+            <ImageView id="menuIcon" fx:id="menuIconBack" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                <image>
                   <Image url="@../images/menuLines.png" />
                </image>
@@ -79,7 +78,7 @@
       </VBox>
       <VBox fx:id="verticalFullMenu" onMouseExited="#hideMenu" pickOnBounds="false" prefWidth="140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fx:id="meniu" pickOnBounds="false" prefWidth="100.0" stylesheets="@../css/Meniu.css" VBox.vgrow="ALWAYS">
+            <VBox id="menu" fx:id="meniu" pickOnBounds="false" prefWidth="100.0" stylesheets="@../css/Meniu.css" VBox.vgrow="ALWAYS">
                <children>
                   <ImageView fx:id="menuIconFront" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#fixMenu" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -89,7 +88,7 @@
                         <Insets bottom="10.0" left="10.0" top="5.0" />
                      </VBox.margin>
                   </ImageView>
-                  <HBox id="menuItem" fx:id="menuItem_Doneaza" alignment="CENTER_LEFT" maxHeight="40.0" prefHeight="40.0" prefWidth="100.0">
+                  <HBox id="menuItem" fx:id="menuItem_Doneaza" alignment="CENTER_LEFT" maxHeight="40.0" onMouseClicked="#goToDoneazaHandler" prefHeight="40.0" prefWidth="100.0">
                      <children>
                         <Label text="Donează" textFill="#9e8484">
                            <font>
@@ -104,7 +103,7 @@
                         <Insets left="5.0" />
                      </padding>
                   </HBox>
-                  <HBox id="menuItem" fx:id="menuItem_Istoric" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="40.0" prefHeight="40.0" prefWidth="100.0">
+                  <HBox id="menuItem" fx:id="menuItem_Istoric" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="40.0" onMouseClicked="#goToIstoricHandler" prefHeight="40.0" prefWidth="100.0">
                      <children>
                         <Label text="Istoric" textFill="#9e8484">
                            <font>
@@ -119,7 +118,7 @@
                         <Insets left="5.0" />
                      </padding>
                   </HBox>
-                  <HBox id="menuItem" fx:id="menuItem_DatePersonale" alignment="CENTER_LEFT" layoutX="10.0" layoutY="50.0" maxHeight="40.0" prefHeight="40.0" prefWidth="100.0">
+                  <HBox id="menuItem" fx:id="menuItem_DatePersonale" alignment="CENTER_LEFT" layoutX="10.0" layoutY="50.0" maxHeight="40.0" onMouseClicked="#goToDatePersonaleHandler" prefHeight="40.0" prefWidth="100.0">
                      <children>
                         <Label text="Date personale" textFill="#9e8484">
                            <font>
