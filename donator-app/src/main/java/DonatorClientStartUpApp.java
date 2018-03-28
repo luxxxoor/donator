@@ -11,7 +11,7 @@ public class DonatorClientStartUpApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("xml/MainWindow.fxml"));
+        loader.setLocation(getClass().getResource("xml/login.fxml"));
         primaryStage.setScene(new Scene(loader.load()));
         primaryStage.show();
     }
